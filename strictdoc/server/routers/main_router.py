@@ -97,6 +97,9 @@ from strictdoc.export.html.generators.view_objects.project_tree_view_object impo
 from strictdoc.export.html.generators.view_objects.search_screen_view_object import (
     SearchScreenViewObject,
 )
+from strictdoc.export.html.generators.view_objects.server_error_view_object import (
+    ServerErrorViewObject,
+)
 from strictdoc.export.html.html_generator import HTMLGenerator
 from strictdoc.export.html.html_templates import HTMLTemplates
 from strictdoc.export.html.renderers.link_renderer import LinkRenderer
@@ -2661,9 +2664,18 @@ def create_main_router(
         static_file = os.path.join(project_output_path, url_to_asset)
         content_type, _ = guess_type(static_file)
 
+        # "errors/index.jinja"
         if not os.path.isfile(static_file):
+            view_object = ServerErrorViewObject(
+                traceability_index=export_action.traceability_index,
+                project_config=project_config,
+                error_code=404
+            )
+            output = view_object.render_screen(env())
+
             return Response(
-                content=f"File not found: {url_to_asset}",
+                # content=f"File not found: {url_to_asset}",
+                content=output,
                 status_code=404,
                 media_type=content_type,
             )
