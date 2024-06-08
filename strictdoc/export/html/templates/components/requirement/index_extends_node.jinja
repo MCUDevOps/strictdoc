@@ -2,5 +2,5 @@
 {%- set sdoc_entity = node -%}
 {%- set requirement = node -%}
 {% block sdoc_entity %}
-{% include "components/requirement/index.jinja" %}
+{% include "components/requirement/"~nodeview|default('index', true)~".jinja" %}
 {% endblock sdoc_entity %}

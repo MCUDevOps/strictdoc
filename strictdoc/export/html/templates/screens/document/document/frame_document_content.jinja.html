@@ -13,7 +13,12 @@
           {%- if node.is_text_node() %}
             {% include "components/text_node/index_extends_node.jinja" %}
           {% else %}
+            {%- with
+              nodeview="index_bahn",
+              requirement_style = "bahn"
+            %}
             {% include "components/requirement/index_extends_node.jinja" %}
+            {%- endwith %}
           {% endif %}
         {%- else %}
           {% assert false, "Must not reach here." %}

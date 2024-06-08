@@ -1,0 +1,51 @@
+sdoc-requirement[requirement-view="bahn"] {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:  "bahn1 bahn2"
+                        "bahn1 bahn3"
+                        "bahn4 bahn4";
+  place-items: stretch stretch;
+  place-content: stretch stretch;
+}
+
+sdoc-requirement[requirement-view="bahn"] sdoc-requirement-title {
+  /* padding: 0; */
+  outline: none;
+  background-color: transparent;
+  background: transparent;
+}
+
+sdoc-requirement[requirement-view="bahn"] .requirement-bahn-1 {
+  grid-area: bahn1;
+}
+
+sdoc-requirement[requirement-view="bahn"] .requirement-bahn-2 {
+  grid-area: bahn2;
+}
+
+sdoc-requirement[requirement-view="bahn"] .requirement-bahn-3 {
+  grid-area: bahn3;
+  border-top: var(--requirement-border-width, 1px) solid var(--requirement-border-color, #bfbfbf);
+
+  /* display: grid;
+  grid-template-columns: minmax(80px, min-content) minmax(0, 1fr);
+  place-items: stretch stretch;
+  place-content: stretch stretch; */
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+sdoc-requirement[requirement-view="bahn"] .requirement-bahn-3 sdoc-requirement-field-label {
+  flex: 0 1 auto;
+  max-width: 20%;
+  box-sizing: border-box;
+}
+sdoc-requirement[requirement-view="bahn"] .requirement-bahn-3 sdoc-requirement-field {
+  flex: 1 1 80%;
+  box-sizing: border-box;
+}
+
+sdoc-requirement[requirement-view="bahn"] .requirement-bahn-4 {
+  grid-area: bahn4;
+}
